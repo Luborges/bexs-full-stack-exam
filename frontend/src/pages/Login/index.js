@@ -61,7 +61,7 @@ const Login = () => {
                 
                 if (response) {
                     localStorage.setItem("auth", response.data.token);
-                    window.location.href = '/Home';
+                    window.location.href = '/home';
                 }
             }
             catch(err) {
