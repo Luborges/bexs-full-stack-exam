@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import api from '../../services/api';
+import { getDate } from '../../utils/functions';
 
 import { 
     PostContainer,
     LinkPost,
-    Text,
     Date,
     AnswerTotal,
-    User
+    HeaderPost,
+    MessageIcon,
+    Count
 } from './styles';
 
 const Post = ({ question, setError }) => {
@@ -29,19 +31,22 @@ const Post = ({ question, setError }) => {
             }
             catch(err) {
                 //alert('Houve um problema na requisição de respostas');
+                setError(err);
                 console.error(err);
             }
         }
         loadTotal();
-    }, []);
+    }, [id]);
 
     return (
         <LinkPost to={`/details/${id}`}>
             <PostContainer>
-                <Text>{text}</Text>
-                <Date><b>Data:</b> {creationDate}</Date>
-                <User><b>Usuário:</b> {user}</User>
-                <AnswerTotal><b>Respostas:</b> {answerTotal}</AnswerTotal>
+                <HeaderPost>
+                    <div><b>Usuário:</b> {user}</div>
+                    <Date><b>Data:</b> {getDate(creationDate)}</Date>
+                </HeaderPost>
+                    <div>{text}</div>
+                    <AnswerTotal><MessageIcon size={18} color={"#ccc"} /><Count>{answerTotal}</Count></AnswerTotal>
             </PostContainer>
         </LinkPost>
     )

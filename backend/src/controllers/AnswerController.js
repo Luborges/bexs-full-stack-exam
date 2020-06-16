@@ -8,6 +8,8 @@ class AnswerController {
             .where('id', id)
             .select([
                 'questions.text',
+                'questions.creationDate',
+                'questions.user'
             ]).first();
 
         const answers = await knex('answers')
@@ -17,7 +19,7 @@ class AnswerController {
             ]);
 
         return res.status(200).send({
-            question: question.text,
+            question,
             answers,
         });
     }

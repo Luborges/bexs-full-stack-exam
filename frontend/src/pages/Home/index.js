@@ -30,7 +30,6 @@ const Home = () => {
                 });
                 
                 if (response) {
-                    console.log(response.data.questions);
                     setQuestions(response.data.questions);
                 }
             }
@@ -63,7 +62,7 @@ const Home = () => {
                     const question = {
                         id: response.data.question,
                         text,
-                        creationDate: new Date(),
+                        creationDate: new window.Date(),
                         user: response.data.user,
                     }
     
@@ -101,7 +100,7 @@ const Home = () => {
     return (
         <Container>
             <Logout onClick={logout}>Logout</Logout>
-            <Box>
+            <div>
                 <Title>Envie sua pergunta</Title>
                 <QuestionBox>
                     <Input placeholder={'Enviar nova pergunta'} onKeyPress={evt => handleEnter(evt.which)}
@@ -117,7 +116,7 @@ const Home = () => {
                         ))}
                     </Questions>
                 </QuestionBox>
-            </Box>
+            </div>
         </Container>
     )
 }

@@ -2,11 +2,20 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const Answer = styled.div`
-
+    border: 0px solid #ccc;
+    border-bottom-width: 1px;
+    margin: 25px 5px;
+    padding: 10px 5px;
 `;
 
 export const Container = styled.div`
-    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
+
+export const ExternalBox = styled.div`
+    width: 800px;
 `;
 
 export const Input = styled.input`
@@ -42,23 +51,23 @@ export const ButtonSend = styled.div`
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid #ddd;
+    border: 1px solid #fff;
     border-radius: 20px;
-    background-color: #ddd;
+    background-color: #fff;
     padding-right: 2px;
     cursor: pointer;
 `;
 
-export const Text = styled.div`
-
-`;
-
 export const Date = styled.div`
-
+    flex: 1;
+    text-align: right;
 `;
 
-export const User = styled.div`
-
+export const HeaderPost = styled.div`
+    display: flex;
+    width: 100%;
+    font-size: 12px;
+    margin-bottom: 5px;
 `;
 
 export const Back = styled(Link)`
@@ -67,4 +76,58 @@ export const Back = styled(Link)`
     top: 30px;
     cursor: pointer;
     color: #5555dd;
+`;
+
+export const Box = styled.div`
+    max-width: 760px;
+    width: 760px;
+    @media (max-width: 630px) {
+        width: 340px;
+    }
+    @media (max-width: 380px) {
+        width: 320px;
+    }
+    &::-webkit-scrollbar {
+        width: 10px;
+    }
+    margin-top: 30px;
+    padding: 5px;
+`;
+
+export const Title = styled.div`
+    font-size: 20px;
+    text-align: center;
+    margin: 20px;
+    flex: 1;
+`;
+
+export const AnswerBox = styled.div`
+    height: 370px;
+    flex: 1;
+    background-color: #fff;
+    border: 1px solid #fff;
+    border-radius: 15px;
+    padding: 0px 15px 5px 15px;
+    margin: 10px;
+    overflow: auto;
+    &::-webkit-scrollbar {
+        width: 10px;
+    }
+      
+    &::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+      
+    &::-webkit-scrollbar-thumb {
+        background: #888;
+    }
+    
+    &::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+`;
+
+export const Subtitle = styled.div`
+    text-align: center;
+    font-size: 12px;
 `;

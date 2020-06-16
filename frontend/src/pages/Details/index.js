@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import api from '../../services/api';
+import { getDate } from '../../utils/functions';
 
 import { 
     Answer,
@@ -7,16 +8,20 @@ import {
     Input,
     ButtonSend,
     Send,
-    Text,
     Date,
-    User,
-    Back
+    Back,
+    Box,
+    AnswerBox,
+    Title,
+    ExternalBox,
+    HeaderPost,
+    Subtitle
 } from './styles';
 
 const Details = ({ match }) => {
     const [answers, setAnswers] = useState([]);
     const [input, setInput] = useState('');
-    const [question, setQuestion] = useState('');
+    const [question, setQuestion] = useState({});
     const [error, setError] = useState('');
     const { id } = match.params;
     
@@ -30,7 +35,6 @@ const Details = ({ match }) => {
                 });
                 
                 if (response) {
-                    console.log(response.data);
                     setAnswers(response.data.answers);
                     setQuestion(response.data.question);
                 }
@@ -65,7 +69,7 @@ const Details = ({ match }) => {
                     const answer = {
                         id: response.data.answer,
                         text,
-                        creationDate: new Date(),
+                        creationDate: new window.Date(),
                         user: response.data.user,
                     }
     
@@ -92,22 +96,31 @@ const Details = ({ match }) => {
 
     return (
         <Container>
-            {question}
-            {
-                answers.map((item) => (
-                    <Answer key={item.id}>
-                        <Text>{item.text}</Text>
-                        <Date>{item.creationDate}</Date>
-                        <User>{item.user}</User>
-                    </Answer>
-                ))
-            }
-            <Input placeholder={'Responda essa pergunta'} onKeyPress={evt => handleEnter(evt.which)}
-                value={input} onChange={evt => setInput(evt.target.value)} />
-            <ButtonSend onClick={() => handleClick()}>
-            <Send />
-            </ButtonSend>
             <Back to='/home'>Back</Back>
+            <ExternalBox>
+                <Box>
+                    <Title>{question.text}</Title>
+                    <Subtitle>Pergunta feita as <b>{getDate(question.creationDate)}</b> por <b>{question.user}</b></Subtitle>
+                    <AnswerBox>
+                        {
+                            answers.map((item) => (
+                                <Answer key={item.id}>
+                                    <HeaderPost>
+                                        <div>{item.user}</div>
+                                        <Date>{getDate(item.creationDate)}</Date>
+                                    </HeaderPost>
+                                    <div>{item.text}</div>
+                                </Answer>
+                            ))
+                        }
+                    </AnswerBox>
+                    <Input placeholder={'Responda essa pergunta'} onKeyPress={evt => handleEnter(evt.which)}
+                            value={input} onChange={evt => setInput(evt.target.value)} />
+                        <ButtonSend onClick={() => handleClick()}>
+                    <Send />
+                    </ButtonSend>
+                </Box>
+            </ExternalBox>
         </Container>
     )
 }
