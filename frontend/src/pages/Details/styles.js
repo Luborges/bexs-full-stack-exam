@@ -76,6 +76,18 @@ export const Back = styled(Link)`
     top: 30px;
     cursor: pointer;
     color: #5555dd;
+    &:link {
+        text-decoration: none;
+    }
+    &:visited {
+        text-decoration: none;
+    }
+    &:hover {
+        text-decoration: none;
+    }
+    &:active {
+        text-decoration: none;
+    }
 `;
 
 export const Box = styled.div`
@@ -130,4 +142,10 @@ export const AnswerBox = styled.div`
 export const Subtitle = styled.div`
     text-align: center;
     font-size: 12px;
+`;
+
+export const Error = styled.div`
+    font-size: 12px;
+    color: red;
+    text-align: center;
 `;

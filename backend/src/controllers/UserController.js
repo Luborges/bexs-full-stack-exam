@@ -1,5 +1,5 @@
 const knex = require('../database/connection');
-const jwt = require("jsonwebtoken");
+const generateToken = require('../utils/generateToken');
 const bcrypt = require("password-hash");
 
 class UserController {
@@ -48,12 +48,6 @@ class UserController {
             token: generateToken({ user }),
         });
     }
-}
-
-const generateToken = (params) => {
-    return jwt.sign(params, process.env.SECRET, {
-      // expiresIn: 8600,
-    });
 }
 
 module.exports = UserController;

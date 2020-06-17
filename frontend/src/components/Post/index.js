@@ -36,7 +36,7 @@ const Post = ({ question, setError }) => {
             }
         }
         loadTotal();
-    }, [id]);
+    }, [id, setError]);
 
     return (
         <LinkPost to={`/details/${id}`}>

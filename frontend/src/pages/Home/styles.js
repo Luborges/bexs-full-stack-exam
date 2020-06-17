@@ -112,3 +112,9 @@ export const Logout = styled.div`
     cursor: pointer;
     color: #5555dd;
 `;
+
+export const Error = styled.div`
+    font-size: 12px;
+    color: red;
+    text-align: center;
+`;

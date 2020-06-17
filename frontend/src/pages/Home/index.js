@@ -5,14 +5,14 @@ import Post from '../../components/Post';
 
 import { 
     Container,
-    Box,
     Title,
     QuestionBox,
     Questions,
     Input,
     ButtonSend,
     Send,
-    Logout
+    Logout,
+    Error
 } from './styles';
 
 const Home = () => {
@@ -34,15 +34,15 @@ const Home = () => {
                 }
             }
             catch(err) {
-                alert('Houve um problema na requisição de perguntas');
+                messageError('Houve um problema na requisição de perguntas');
                 console.error(err);
             }
         }
         loadQuestions();
     }, []);
 
-    const messageError = () => {
-        setError('There was an error communicating with the service, please try again later');
+    const messageError = (err) => {
+        setError(err);
     }
 
     const handleClick = async () => {
@@ -74,7 +74,7 @@ const Home = () => {
                 }
             }
             catch(err) {
-                messageError();
+                messageError('Houve um problema no cadastro de perguntas');
                 console.error(err);
             }
         }
@@ -102,6 +102,7 @@ const Home = () => {
             <Logout onClick={logout}>Logout</Logout>
             <div>
                 <Title>Envie sua pergunta</Title>
+                <Error>{error}</Error>
                 <QuestionBox>
                     <Input placeholder={'Enviar nova pergunta'} onKeyPress={evt => handleEnter(evt.which)}
                         value={input} onChange={evt => setInput(evt.target.value)} />

@@ -15,7 +15,8 @@ import {
     Title,
     ExternalBox,
     HeaderPost,
-    Subtitle
+    Subtitle,
+    Error
 } from './styles';
 
 const Details = ({ match }) => {
@@ -40,15 +41,15 @@ const Details = ({ match }) => {
                 }
             }
             catch(err) {
-                alert('Houve um problema no cadastro da pergunta');
+                messageError('Houve um problema na recuperação de respostas');
                 console.error(err);
             }
         }
         loadAnswers();
-    }, []);
+    }, [id]);
 
-    const messageError = () => {
-        setError('There was an error communicating with the service, please try again later');
+    const messageError = (err) => {
+        setError(err);
     }
 
     const handleClick = async () => {
@@ -82,7 +83,7 @@ const Details = ({ match }) => {
                 }
             }
             catch(err) {
-                messageError();
+                messageError('Houve um problema no cadastro da resposta');
                 console.error(err);
             }
         }
@@ -96,11 +97,12 @@ const Details = ({ match }) => {
 
     return (
         <Container>
-            <Back to='/home'>Back</Back>
+            <Back to='/home'>{'< Back'}</Back>
             <ExternalBox>
                 <Box>
                     <Title>{question.text}</Title>
                     <Subtitle>Pergunta feita as <b>{getDate(question.creationDate)}</b> por <b>{question.user}</b></Subtitle>
+                    {<Error>{error}</Error>}
                     <AnswerBox>
                         {
                             answers.map((item) => (

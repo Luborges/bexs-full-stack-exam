@@ -6,13 +6,14 @@
   "scripts": {
     "dev": "nodemon src/server.js",
     "knex:migrate": "knex --knexfile src/knexfile.js migrate:latest",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "cross-env NODE_ENV=test jest"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
+    "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
