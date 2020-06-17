@@ -32,6 +32,92 @@ Você deve criar um arquivo .env na pasta `backend` com as seguintes variaveis:
 * Backend: Executar o comando ```npm run test``` na pasta `backend` com a variavel de ambiente NODE_ENV=test.
 * Frontend: Executar ```npm run dev``` na pasta `backend` e executar o comando ```npm test``` na pasta `frontend`.
 
+
+### API
+
+#### User
+* URL:
+/user
+
+* METHOD:
+`POST`
+
+* BODY:
+`email=[string]`
+`password=[string]`
+
+* URL:
+/login
+
+* METHOD:
+`POST`
+
+* BODY:
+`email=[string]`
+`password=[string]`
+
+#### Question
+
+* URL:
+/questions
+
+* METHOD:
+`GET`
+
+* HEADERS:
+`Authorization=[Bearer token]`
+
+* URL:
+/questions-count
+
+* METHOD:
+`GET`
+
+* PARAMS:
+`id=[integer]`
+
+* HEADERS:
+`Authorization=[Bearer token]`
+
+* URL:
+/questions
+
+* METHOD:
+`POST`
+
+* BODY:
+`text=[string]`
+
+* HEADERS:
+`Authorization=[Bearer token]`
+
+#### Question
+
+* URL:
+/answers
+
+* METHOD:
+`GET`
+
+* PARAMS:
+`id=[integer]`
+
+* HEADERS:
+`Authorization=[Bearer token]`
+
+* URL:
+/answers
+
+* METHOD:
+`POST`
+
+* BODY:
+`id=[integer]`
+`text=[string]`
+
+* HEADERS:
+`Authorization=[Bearer token]`
+
 ## Built With
 
 * [ReactJS](https://reactjs.org/) - A biblioteca JavaScript utilizada para criar os componentes.

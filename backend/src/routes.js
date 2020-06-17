@@ -24,7 +24,6 @@ routes.post('/questions', middleware, questionController.create);
 routes.get('/answers', middleware, answerController.find);
 routes.post('/answers', middleware, answerController.create);
 
-
 routes.get('/logout', (req, res) => {
     req.session.destroy();
     return res.status(200);
