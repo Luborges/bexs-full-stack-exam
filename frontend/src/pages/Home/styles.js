@@ -118,3 +118,23 @@ export const Error = styled.div`
     color: red;
     text-align: center;
 `;
+
+export const Checkbox = styled.div`
+    text-align: right;
+    margin-right: 12px;
+    font-size: 13px;
+`;
+
+export const Search = styled.input`
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 5px 15px;
+    height: 20px;
+    width: calc(100% - 40px);
+    @media (max-width: 630px) {
+        max-width: 370px;
+    }
+    @media (max-width: 380px) {
+        max-width: 340px;
+    }
+`;

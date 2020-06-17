@@ -5,7 +5,7 @@ class QuestionController {
         const questions = await knex('questions')
             .select([
                 'questions.*',
-            ]);
+            ]).orderBy('creationDate', 'desc');
             
         return res.status(200).send({
             questions,

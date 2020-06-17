@@ -16,7 +16,7 @@ class AnswerController {
             .where('question_id', id)
             .select([
                 'answers.*',
-            ]);
+            ]).orderBy('creationDate', 'desc');;
 
         return res.status(200).send({
             question,

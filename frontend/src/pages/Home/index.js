@@ -12,13 +12,17 @@ import {
     ButtonSend,
     Send,
     Logout,
-    Error
+    Error,
+    Checkbox,
+    Search
 } from './styles';
 
 const Home = () => {
     const [questions, setQuestions] = useState([]);
     const [input, setInput] = useState('');
+    const [search, setSearch] = useState('');
     const [error, setError] = useState('');
+    const [filter, setFilter] = useState(false);
 
     useEffect(() => {
         const loadQuestions = async () => {
@@ -97,11 +101,18 @@ const Home = () => {
         window.location.href = '/';
     }
 
+    let filteredQuestions = questions;
+
+    if (search && search!=='') {
+        filteredQuestions = questions.filter((item) => item.text.toLowerCase().indexOf(search.toLowerCase()) > -1);
+    }
+
     return (
         <Container>
             <Logout onClick={logout}>Logout</Logout>
             <div>
                 <Title id='title'>Envie sua pergunta</Title>
+                <Search placeholder={'Filtrar perguntas'} value={search} onChange={evt => setSearch(evt.target.value)} />
                 <Error>{error}</Error>
                 <QuestionBox>
                     <Input placeholder={'Enviar nova pergunta'} onKeyPress={evt => handleEnter(evt.which)}
@@ -109,10 +120,15 @@ const Home = () => {
                     <ButtonSend onClick={() => handleClick()}>
                         <Send />
                     </ButtonSend>
+                    <Checkbox>
+                        <input type={'checkbox'}
+                        onChange={() => setFilter(!filter)} />
+                        <label>Filtar apenas não respondidas</label>
+                    </Checkbox>
                     <Questions id='questions'>
-                        {questions.map((item) => (
+                        {filteredQuestions.map((item) => (
                             <div key={item.id}>
-                                <Post question={item} setError={setError} />
+                                <Post question={item} setError={setError} filter={filter} />
                             </div>
                         ))}
                     </Questions>

@@ -12,7 +12,7 @@ import {
     Count
 } from './styles';
 
-const Post = ({ question, setError }) => {
+const Post = ({ question, setError, filter }) => {
     const { id, text, creationDate, user } = question;
     const [answerTotal, setAnswerTotal] = useState('');
 
@@ -39,17 +39,23 @@ const Post = ({ question, setError }) => {
     }, [id, setError]);
 
     return (
-        <LinkPost to={`/details/${id}`}>
-            <PostContainer>
-                <HeaderPost>
-                    <div><b>Usuário:</b> {user}</div>
-                    <Date><b>Data:</b> {getDate(creationDate)}</Date>
-                </HeaderPost>
-                    <div id='text'>{text}</div>
-                    <AnswerTotal><MessageIcon size={18} color={"#ccc"} /><Count>{answerTotal}</Count></AnswerTotal>
-            </PostContainer>
-        </LinkPost>
+        <>
+        {
+            ((filter && answerTotal === 0) || !filter) &&
+            <LinkPost to={`/details/${id}`}>
+                <PostContainer>
+                    <HeaderPost>
+                        <div><b>Usuário:</b> {user}</div>
+                        <Date><b>Data:</b> {getDate(creationDate)}</Date>
+                    </HeaderPost>
+                        <div id='text'>{text}</div>
+                        <AnswerTotal><MessageIcon size={18} color={"#ccc"} /><Count>{answerTotal}</Count></AnswerTotal>
+                </PostContainer>
+            </LinkPost>
+        }
+        </>
     )
+    
 }
 
 export default Post;
