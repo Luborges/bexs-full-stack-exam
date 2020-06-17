@@ -35,7 +35,7 @@ Você deve criar um arquivo .env na pasta `backend` com as seguintes variaveis:
 
 ### API
 
-#### User
+#### Create user
 * URL:
 /user
 
@@ -46,6 +46,7 @@ Você deve criar um arquivo .env na pasta `backend` com as seguintes variaveis:
 `email=[string]`
 `password=[string]`
 
+#### Login
 * URL:
 /login
 
@@ -58,6 +59,7 @@ Você deve criar um arquivo .env na pasta `backend` com as seguintes variaveis:
 
 #### Question
 
+#### Get all questions
 * URL:
 /questions
 
@@ -66,6 +68,8 @@ Você deve criar um arquivo .env na pasta `backend` com as seguintes variaveis:
 
 * HEADERS:
 `Authorization=[Bearer token]`
+
+#### Count answers from question
 
 * URL:
 /questions-count
@@ -79,6 +83,8 @@ Você deve criar um arquivo .env na pasta `backend` com as seguintes variaveis:
 * HEADERS:
 `Authorization=[Bearer token]`
 
+#### Create question
+
 * URL:
 /questions
 
@@ -91,7 +97,7 @@ Você deve criar um arquivo .env na pasta `backend` com as seguintes variaveis:
 * HEADERS:
 `Authorization=[Bearer token]`
 
-#### Question
+#### Get all answers from question
 
 * URL:
 /answers
@@ -104,6 +110,8 @@ Você deve criar um arquivo .env na pasta `backend` com as seguintes variaveis:
 
 * HEADERS:
 `Authorization=[Bearer token]`
+
+#### Create answer for question
 
 * URL:
 /answers
