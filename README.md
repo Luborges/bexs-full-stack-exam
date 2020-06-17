@@ -7,7 +7,7 @@ Para executar esse projeto você deve
 
 ### Installing
 
-* Baixar este repositório [here](https://github.com/Luborges/bexs-full-stack-exam/archive/master.zip)
+* Baixar este repositório [aqui](https://github.com/Luborges/bexs-full-stack-exam/archive/master.zip)
 
 * Executar ```npm install``` para instalar os pacotes na pasta `frontend` e `backend`.
 * Executar ```npm start``` na pasta `frontend`.
