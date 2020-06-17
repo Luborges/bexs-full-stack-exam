@@ -101,7 +101,7 @@ const Details = ({ match }) => {
             <ExternalBox>
                 <Box>
                     <Title>{question.text}</Title>
-                    <Subtitle>Pergunta feita as <b>{getDate(question.creationDate)}</b> por <b>{question.user}</b></Subtitle>
+                    <Subtitle id='subtitle'>Pergunta feita as <b>{getDate(question.creationDate)}</b> por <b>{question.user}</b></Subtitle>
                     {<Error>{error}</Error>}
                     <AnswerBox>
                         {

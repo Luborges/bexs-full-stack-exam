@@ -101,7 +101,7 @@ const Home = () => {
         <Container>
             <Logout onClick={logout}>Logout</Logout>
             <div>
-                <Title>Envie sua pergunta</Title>
+                <Title id='title'>Envie sua pergunta</Title>
                 <Error>{error}</Error>
                 <QuestionBox>
                     <Input placeholder={'Enviar nova pergunta'} onKeyPress={evt => handleEnter(evt.which)}
